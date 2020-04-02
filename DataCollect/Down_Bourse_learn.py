@@ -25,5 +25,9 @@ for headlines in Bashgah_soup_class:
     subheadlines = headlines.find_all('div', attrs={'class': 'wpb_wrapper'})
     for subhead in subheadlines:
         if len(subhead.text) != 1:
-            f.write(subhead.p.text.strip())
+            try:
+                f.write(subhead.p.text.strip())
+            except:
+                print("Error is now")
+
 f.close()
