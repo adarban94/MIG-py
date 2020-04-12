@@ -1,0 +1,41 @@
+from pyrogram import Client
+import json
+import re
+from datetime import datetime
+
+app = Client("AbbasDarban",
+    api_id=,
+    api_hash="")
+
+@app.on_message()
+
+def log(client, message):
+    x=1
+    if message.chat.id == -1001142758923:  
+        [var1 , var2 ] = re.findall(r'\d+\,\d+\,*\d+',message.text)
+        print(var1)
+        MESSAGE =  {}
+        MESSAGE["ID"] = x+1
+        MESSAGE["ABSHODE FARDAII"] = var1
+        MESSAGE["TALA"] = var2
+        MESSAGE["TIME"] = datetime.utcfromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S')
+        with open('new_json_data.json', 'a+') as fd:
+            json.dump(MESSAGE, fd, indent=4)
+        fd.close()
+
+    else:
+        print("1")
+        print(message.chat.id)
+        print(message.date)
+        f = open("new_json_data.json", 'r', encoding="utf-8")
+        d = f.read().replace('\n', '')
+        a= json.loads(d)
+        print(a)
+        f.close()
+        #print(data["ID"])
+        
+
+        
+
+
+app.run()  # Automatically start() and idle()
