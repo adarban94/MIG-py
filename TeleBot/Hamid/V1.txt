@@ -11,7 +11,7 @@ app = Client("AbbasDarban",
 
 def log(client, message):
     x=1
-    if message.chat.id == -1001142758923:  
+    if message.chat.id == -1001142758923:
         [var1 , var2 ] = re.findall(r'\d+\,\d+\,*\d+',message.text)
         print(var1)
         MESSAGE =  {}
@@ -33,9 +33,9 @@ def log(client, message):
         print(a)
         f.close()
         #print(data["ID"])
-        
 
-        
+
+
 
 
 app.run()  # Automatically start() and idle()
