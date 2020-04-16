@@ -40,6 +40,8 @@ minprices = idT[:]
 spanprices = idT[:]
 lastprices = idT[:]
 
+pricemotivation = 1000  # must get from json file
+
 # determine the time id from time span for all senario_T and prices
 for i, item in enumerate(idT):
     for id, tobj in enumerate(timeobject[::-1], start=1):
@@ -62,7 +64,7 @@ for i, item in enumerate(idT):
         # minprices[i] must insert into json file
         # lastprices[i] must insert into json file
 
-        if lastprices[i] - minprices[i] > pricemotivation:
+        if lastprices[i] - float(minprices[i].replace(',', '')) > pricemotivation:
             print("آلارم شماره: %d \
                از سناریو نوع: %s معتبر می باشد \
                 \n بیشترین قیمت این شارپ: %d \
