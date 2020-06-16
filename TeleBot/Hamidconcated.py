@@ -28,10 +28,6 @@ senario_Plist = [float(i) for i in filedata2["senario_P"]]
 # notice that the type of elements in this list is string! not INTEGER
 senario_Tlist = [float(i) for i in filedata2["senario_T"]]
 
-# sharps = {}
-# for name in senario_namelist:
-#    sharps[name] =
-
 # Initial varialbes for prices and
 idT = len(senario_Tlist) * [0]
 prices = idT[:]
@@ -39,8 +35,6 @@ maxprices = idT[:]
 minprices = idT[:]
 spanprices = idT[:]
 lastprices = idT[:]
-
-pricemotivation = 1000  # must get from json file
 
 # determine the time id from time span for all senario_T and prices
 for i, item in enumerate(idT):
@@ -52,6 +46,7 @@ for i, item in enumerate(idT):
             idT[i] = -id-1
         elif timediff2.total_seconds() > timedelta(seconds=senario_Tlist[i]).total_seconds():
             idT[i] = -2
+
     prices[i] = abshodelist[idT[i]:]
     maxprices[i] = max(prices[i])
     minprices[i] = min(prices[i])
